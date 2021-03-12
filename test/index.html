@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,31 +9,83 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100&effect=neon">
-    <title>Document</title>
+  <title>Document</title>
 </head>
+
 <body>
+  <!-- TITLE AND CREATE SECTION -->
   <h1 class="glow text-center my-3 pb-3">DATA~LIST</h1>
   <div class="text-center m-3">
-    <a class="a-n2 href="#">
+    <a class="a-n2 href=" #">
       <span></span>
       <span></span>
       <span></span>
       <span></span>
-      CREATE YOUR CARD
-    </a>  
+      <button type="button" class="btn " data-bs-toggle="modal" data-bs-target="#tileBuilder">
+        CREATE YOUR CARD
+      </button>
+
+    </a>
   </div>
-    <section>
+
+  <!-- MODAL SECTION -->
+  <div class="modal fade" id="tileBuilder" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="tileBuilderLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="tileBuilderLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id='tileInputs'>
+          <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input type="text" name='title' class="form-control" id="title" placeholder="title">
+          </div>
+          <div class="mb-3">
+            <label for="image_url" class="form-label">Image url</label>
+            <input type="text" name='imagePath' class="form-control" id="image_url" placeholder="image url">
+          </div>
+          <div class="mb-3">
+            <label for="description" class="form-label">description</label>
+            <textarea class="form-control" name='description' id="description" rows="3"
+              placeholder='description'></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id='close' class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" id='add' class="btn btn-primary">Create</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEARCH SECTION -->
+  <section>
     <label for="exampleDataList" class="form-label"></label>
     <div class="w-50 m-auto mb-3">
       <input class="form-control" list="searchOptions" id="search" placeholder="Type to search...">
     </div>
     <datalist id="searchOptions">
     </datalist>
+
+  <!-- NAVIGATION SECTION -->
+    <nav aria-label="Page navigation">
+      <ul class="pagination justify-content-center">
+       
+      </ul>
+    </nav>
     <div id='list' class='d-flex flex-wrap justify-content-center'></div>
   </section>
 
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js"
+    integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js"
+    integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG"
+    crossorigin="anonymous"></script>
   <script src='./script.js'></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
 </body>
+
 </html>

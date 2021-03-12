@@ -16,7 +16,7 @@ function renderList(list){
   list.forEach(item=>{
     container.innerHTML += `
       <div class="card m-2" style="width: 18rem;">
-        <img src="${item.imagePath}" style="height:150px;object-fit:cover" class="card-img-top" alt="${item.description}">
+        <img src="${item.imagePath}" style="height:200px;object-fit:cover" class="card-img-top" alt="${item.description}">
         <div class="card-body">
           <h5 class="card-title">${item.title}</h5>
           <p class="card-text">${item.description}</p>

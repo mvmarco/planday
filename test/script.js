@@ -1,10 +1,13 @@
+let imgPerPage = 4;
 async function displayList() {
   const response = await fetch('./list.json');
   list = await response.json(); 
-  renderList(list)
+  renderList(list.slice(0, imgPerPage));
+  generatePagination(list)
 }
 
 displayList()
+
 
 function renderList(list){
 
@@ -35,4 +38,42 @@ searchEl.addEventListener('input', handleInput)
 function search(query){
   let filtered = list.filter(item => item.title.toUpperCase().includes(query.toUpperCase()) || item.description.includes(query.toUpperCase()))
   renderList(filtered)
+  generatePagination(filtered)
 }
+
+function addTile(){
+  let inputs = document.querySelectorAll('#tileInputs input, #tileInputs textarea');
+  let newTile = {};
+  inputs.forEach(input=>{
+    newTile[input.name] = input.value
+    input.value = ''
+  })
+  list.push(newTile)
+  renderList(list);
+   document.getElementById('close').click()
+}
+
+let addBtn = document.querySelector('#add')
+addBtn.onclick = addTile
+
+function generatePagination(list){
+  let paginationContainer = document.querySelector('.pagination');
+  paginationContainer.innerHTML=''
+  let pages = ''
+  for (let i = 0; i < Math.ceil(list.length / imgPerPage);i++){
+    pages+= `
+      <li class="page-item"><a class="page-link" id="page-${i}">${i+1}</a></li>
+    `
+  }
+
+  paginationContainer.innerHTML = pages;
+
+  paginationContainer.querySelectorAll('a').forEach(page=>{
+    page.onclick = function(){
+      let start = page.id.split('-')[1] * imgPerPage
+      renderList(list.slice(start, start+imgPerPage));
+    }
+  })
+
+}
+
